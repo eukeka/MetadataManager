@@ -2,7 +2,7 @@
 
 MetadataManagerはファイル情報を管理するためのツールです．<br>
 ディレクトリエントリ（readdir），ファイル情報（stat）を管理します．<br>
-* ソースの詳細は [Doxygen](./html/index.html "Doxygen") 
+* ソースの詳細は [Doxygen](https://eukeka.github.io/MetadataManager/docs/html/index.html "Doxygen") 
 
 ### 対象環境    
 * 対象環境
