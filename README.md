@@ -1,7 +1,7 @@
-#MetadataManager
+# MetadataManager
 
-MetadataManagerはファイル情報を管理するためのツールです．
-./MetadataStore以下にディレクトリファイルを配置
+MetadataManagerはファイル情報を管理するためのツールです．<br>
+ディレクトリエントリ（readdir），ファイル情報（stat）を管理します．<br>
 
 * 対象環境	
 	* 対象環境
@@ -12,11 +12,13 @@ MetadataManagerはファイル情報を管理するためのツールです．
 		* boost_1_63_0 
 
 * ビルド方法
-	* # make 
+	* "#make" 
 
 * 実行方法 
-	* #make_metadata file_name を実行することでメタデータを保管することができる．
-	* #read_dir dir_name を実行することで，ディレクトリ以下の一覧を表示できる．
-	* #read_fstat file_name を実行することで，ファイル情報を表示することができる．
-
+	* メタデータの保管
+		* "#make_metadata file_name" 
+	* ディレクトリ以下の一覧を表示
+		* "#read_dir dir_name" 
+	* ファイル情報を表示
+		* "#read_fstat file_name" 
 
