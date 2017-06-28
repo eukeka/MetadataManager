@@ -31,10 +31,11 @@ extern void conv_hash	( char * str,	char* hash );
 class metadata_format 
 {
 	public:
-		void get_full_path ( char * q_name, char*full_path);
-		void get_fname     ( char * full_path, char*fname);
-		void get_dir_path  ( char * full_path, char*dir_path);
-		void make_store_dir( char * store_path);
+		void get_full_path 			( char * q_name, char*full_path);
+		void get_fname     			( char * full_path, char*fname);
+		void get_dir_path  			( char * full_path, char*dir_path);
+		void get_store_dir_path ( char * full_path, char*dir_path);
+		void make_store_dir			( char * store_path);
 };
 
 

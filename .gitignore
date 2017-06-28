@@ -1,0 +1,6 @@
+MetadataStore/
+bin/
+backup/
+obj/
+html
+latex/

@@ -1,44 +1,45 @@
-OBJDIR  = ./bin/
-BIN   	= ./bin/
+BIN   	= ./obj/
+
+all: make_metadata read_dir read_fstat
+
+make_metadata: ./obj/metadata_format.o   ./obj/make_metadata.o ./obj/hash.o ./obj/serialize-dir_entry.o ./obj/serialize-metadata.o ./obj/metadata_io.o
+	g++ -lboost_serialization -lcrypto  ./obj/metadata_format.o  ./obj/serialize-dir_entry.o  ./obj/serialize-metadata.o  ./obj/hash.o ./obj/make_metadata.o ./obj/metadata_io.o  -o make_metadata 
 
 
-make_metadata: ./bin/metadata_format.o   ./bin/make_metadata.o ./bin/hash.o ./bin/serialize-dir_entry.o ./bin/serialize-metadata.o ./bin/metadata_io.o
-	g++ -lboost_serialization -lcrypto  ./bin/metadata_format.o  ./bin/serialize-dir_entry.o  ./bin/serialize-metadata.o  ./bin/hash.o ./bin/make_metadata.o ./bin/metadata_io.o  -o make_metadata 
+read_dir: ./obj/read_dir.o ./obj/hash.o ./obj/metadata_format.o  ./obj/serialize-dir_entry.o ./obj/serialize-metadata.o  ./obj/metadata_io.o
+	g++ -lboost_serialization -lcrypto ./obj/metadata_format.o  ./obj/serialize-dir_entry.o  ./obj/serialize-metadata.o  ./obj/hash.o ./obj/read_dir.o  ./obj/metadata_io.o  -o read_dir 
+
+read_fstat: ./obj/read_fstat.o ./obj/hash.o ./obj/metadata_format.o  ./obj/serialize-dir_entry.o ./obj/serialize-metadata.o  ./obj/metadata_io.o
+	g++ -lboost_serialization -lcrypto ./obj/metadata_format.o ./obj/serialize-dir_entry.o  ./obj/serialize-metadata.o  ./obj/hash.o ./obj/read_fstat.o   ./obj/metadata_io.o  -o read_fstat 
 
 
-read_dir: ./bin/read_dir.o ./bin/hash.o ./bin/metadata_format.o  ./bin/serialize-dir_entry.o ./bin/serialize-metadata.o  ./bin/metadata_io.o
-	g++ -lboost_serialization -lcrypto ./bin/metadata_format.o  ./bin/serialize-dir_entry.o  ./bin/serialize-metadata.o  ./bin/hash.o ./bin/read_dir.o  ./bin/metadata_io.o  -o read_dir 
+$(BIN)hash.o:./src/hash.cpp
+	g++ -c ./src/hash.cpp -o ./obj/hash.o
 
-read_fstat: ./bin/read_fstat.o ./bin/hash.o ./bin/metadata_format.o  ./bin/serialize-dir_entry.o ./bin/serialize-metadata.o  ./bin/metadata_io.o
-	g++ -lboost_serialization -lcrypto ./bin/metadata_format.o ./bin/serialize-dir_entry.o  ./bin/serialize-metadata.o  ./bin/hash.o ./bin/read_fstat.o   ./bin/metadata_io.o  -o read_fstat 
+$(BIN)serialize-dir_entry.o:./src/serialize-dir_entry.cpp
+	g++ -c ./src/serialize-dir_entry.cpp -o ./obj/serialize-dir_entry.o
 
-$(BIN)hash.o:hash.cpp
-	g++ -c hash.cpp -o ./bin/hash.o
+$(BIN)serialize-metadata.o:./src/serialize-metadata.cpp
+	g++ -c ./src/serialize-metadata.cpp -o ./obj/serialize-metadata.o
 
-$(BIN)serialize-dir_entry.o:serialize-dir_entry.cpp
-	g++ -c serialize-dir_entry.cpp -o ./bin/serialize-dir_entry.o
+$(BIN)searchMetaData.o:./src/searchMetaData.cpp
+	g++ -c ./src/searchMetaData.cpp -o ./obj/searchMetaData.o
 
-$(BIN)serialize-metadata.o:serialize-metadata.cpp
-	g++ -c serialize-metadata.cpp -o ./bin/serialize-metadata.o
-
-$(BIN)searchMetaData.o:searchMetaData.cpp
-	g++ -c searchMetaData.cpp -o ./bin/searchMetaData.o
-
-$(BIN)make_metadata.o:make_metadata.cpp
-	g++ -c make_metadata.cpp -o ./bin/make_metadata.o
+$(BIN)make_metadata.o:./src/make_metadata.cpp
+	g++ -c ./src/make_metadata.cpp -o ./obj/make_metadata.o
 
 
-$(BIN)read_dir.o:read_dir.cpp
-	g++ -c read_dir.cpp -o ./bin/read_dir.o
-$(BIN)read_fstat.o:read_fstat.cpp
-	g++ -c read_fstat.cpp -o ./bin/read_fstat.o
+$(BIN)read_dir.o:./src/read_dir.cpp
+	g++ -c ./src/read_dir.cpp -o ./obj/read_dir.o
+$(BIN)read_fstat.o:./src/read_fstat.cpp
+	g++ -c ./src/read_fstat.cpp -o ./obj/read_fstat.o
 
 
-$(BIN)metadata_format.o:metadata_format.cpp
-	g++ -c metadata_format.cpp -o ./bin/metadata_format.o
+$(BIN)metadata_format.o:./src/metadata_format.cpp
+	g++ -c ./src/metadata_format.cpp -o ./obj/metadata_format.o
 	
-$(BIN)metadata_io.o:metadata_io.cpp
-	g++ -c metadata_io.cpp -o ./bin/metadata_io.o
+$(BIN)metadata_io.o:./src/metadata_io.cpp
+	g++ -c ./src/metadata_io.cpp -o ./obj/metadata_io.o
 
 
 clean:
