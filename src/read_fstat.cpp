@@ -61,7 +61,7 @@ void read_fstat(char * q_name){
 	// ファイル名を取得
 	mf.get_fname( full_path, fname);
 	// ディレクトリパスを取得
-	mf.get_dir_path( full_path, dir_path );
+	mf.get_store_dir_path( full_path, dir_path );
 
 	// ディレクトリパスとファイルパスからハッシュを求める
 	conv_hash( full_path, fileinfo_fname_hash );

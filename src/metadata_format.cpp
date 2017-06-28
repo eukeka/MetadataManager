@@ -10,7 +10,10 @@
 
 using namespace std;
 
-// フルパスを取得
+/*! @brief フルパスを取得する 
+* @param q_name 	変換したい名前  
+* @param full_path	変換後の絶対パス  
+*/
 void metadata_format::get_full_path(char*q_name, char*full_path){
  if( realpath( q_name, full_path ) == NULL ){
   cerr<<"Error : File is not exist" << endl;
@@ -19,7 +22,10 @@ void metadata_format::get_full_path(char*q_name, char*full_path){
 }
 
 
-// ファイル名を取得
+/*! @brief ファイル名を取得
+* @param full_path 絶対パス 
+* @param fname ファイル名 
+ */
 void metadata_format::get_fname(char*full_path, char*fname){
 	char tmppath[MAX_PATH]={};
 	memcpy( tmppath, full_path, MAX_PATH );

@@ -1,18 +1,24 @@
 var indexSectionsWithContent =
 {
-  0: "m",
-  1: "m"
+  0: "dfgm",
+  1: "dfm",
+  2: "g",
+  3: "f"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "pages"
+  1: "classes",
+  2: "functions",
+  3: "variables"
 };
 
 var indexSectionLabels =
 {
-  0: "全て",
-  1: "ページ"
+  0: "All",
+  1: "Classes",
+  2: "Functions",
+  3: "Variables"
 };
 
